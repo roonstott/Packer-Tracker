@@ -34,45 +34,36 @@ namespace PackerTracker.Models
       IdCounter = 1;
     }
 
-    public List<Item> AddToShopList()
+    public void AddToShopList()
     {
-      _shoppingList.Add(this);
-      return _shoppingList;
+      if (!_shoppingList.Contains(this))
+      {
+        _shoppingList.Add(this);
+      }
     }
-    public List<Item> RemoveFromShopList()
+    public void RemoveFromShopList()
     {
       _shoppingList.Remove(this);
-      return _shoppingList;
     }
     public static List<Item> GetShoppingList()
     {
       return _shoppingList;
     }
 
-    public List<Item> AddToPackedList()
-    {
-      _packed.Add(this);
-      return _packed;
+    public void AddToPackedList()
+    { 
+      if (!_packed.Contains(this))
+      {
+        _packed.Add(this);
+      }
     }
-    public List<Item> RemoveFromPackedList()
+    public void RemoveFromPackedList()
     {
       _packed.Remove(this);
-      return _packed;
     }
     public static List<Item> GetPackedList()
     {
       return _packed;
-    }
-    public static Item Find(int id)
-    {
-      for (int i = 0; i < _allItems.Count; i++)
-      {
-        if (_allItems[i].Id == id)
-        {
-          return _allItems[i];
-        }
-      }
-      return _allItems[1];
     }
     public static int FindId(int id)
     {
@@ -84,6 +75,12 @@ namespace PackerTracker.Models
         }
       }
       return -1;
+    }
+
+    public static Item GetItem(int id) 
+    {
+      int foundId = Item.FindId(id);
+      return _allItems[foundId];
     }
   }
 }

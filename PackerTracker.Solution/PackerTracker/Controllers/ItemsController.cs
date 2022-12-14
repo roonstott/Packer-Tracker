@@ -30,20 +30,28 @@ namespace PackerTracker.Controllers
       }
       [HttpPost("/items/addToPackedList")]
       public ActionResult AddToPack(int id)
-      {
-        int foundId = Item.FindId(id);
-        List<Item> allItems = Item.GetAllItems();
-        allItems[foundId].AddToPackedList();
+      { 
+        Item.GetItem(id).AddToPackedList();
         return RedirectToAction("Index");
       }
 
       [HttpPost("/items/addToShoppingList")]
       public ActionResult AddToShop(int id)
       {
-        int foundId = Item.FindId(id);
-        List<Item> allItems = Item.GetAllItems();
-        allItems[foundId].AddToShopList();
+        Item.GetItem(id).AddToShopList();
         return RedirectToAction("Index");
+      }
+      [HttpPost("/items/remove")]
+      public ActionResult Remove(int id)
+      {
+        Item.GetItem(id).RemoveFromShopList();
+        return RedirectToAction("Index");
+      }
+      [HttpGet("/items/{id}")]
+      public ActionResult Show(int id)
+      {
+        Item foundItem = Item.GetItem(id);
+        return View(foundItem);
       }
 
     }
