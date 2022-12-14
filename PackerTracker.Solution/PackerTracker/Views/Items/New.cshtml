@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Packer Tracker</title>
+    <link 
+      rel="stylesheet" 
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+      crossorigin="anonymous">
+  </head>
+  <body class="container">
+    <nav class="navbar">
+      <a href="/">Home</a>
+      <a href="/items">Show item list</a>
+      <a href="/items/new">Add new items</a>
+    </nav>
+    <form action="/items" method="post">
+      <label for="name">Enter Item Name</label>
+      <input id="name" name="name" type="text">
+      <button type="submit">Add Item</button>
+    </form>
+  </body>
+</html>
